@@ -1,0 +1,49 @@
+name: Incorrect or missed rating
+description: StayProof showed a wrong trust signal, or missed a suspicious property
+title: "[Rating]: "
+labels: ["rating-accuracy"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us improve accuracy. The more detail you provide, the more actionable this report is.
+  - type: input
+    id: property-url
+    attributes:
+      label: Property URL (Booking/Airbnb/Agoda listing)
+      placeholder: "https://www.booking.com/hotel/..."
+    validations:
+      required: true
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: What kind of issue?
+      options:
+        - "StayProof flagged this as suspicious but it looks genuine"
+        - "StayProof did not flag this but the reviews look fake"
+        - "Rating score seems too high or too low"
+        - "Cross-reference result looks wrong"
+        - "Other"
+    validations:
+      required: true
+  - type: textarea
+    id: what-stayproof-showed
+    attributes:
+      label: What did StayProof show?
+      description: "e.g. trust score, anomaly flag, Google Maps cross-reference result"
+    validations:
+      required: true
+  - type: textarea
+    id: why-wrong
+    attributes:
+      label: Why do you think this is incorrect?
+      description: "Evidence, observations, links to review analysis tools, etc."
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and this hasn't been reported yet
+          required: true

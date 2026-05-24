@@ -1,0 +1,50 @@
+name: Bug report
+description: Broken scraper, display issue, or other malfunction
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing: scrapers break when Booking/Airbnb/Agoda update their sites.
+        Check open issues first to avoid duplicates.
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Affected platform
+      options:
+        - "Booking.com"
+        - "Airbnb"
+        - "Agoda"
+        - "Google Maps cross-reference"
+        - "Search UI"
+        - "Other"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: What did you expect vs what actually occurred?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Open extension\n2. Search for ...\n3. ..."
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      description: Visible in chrome://extensions
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Chrome version
+    validations:
+      required: false
