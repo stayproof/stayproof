@@ -46,7 +46,7 @@ Transparency is the product. Here is exactly what the extension computes — and
 | `src/shared/scoring-config.js` | All numeric thresholds (frozen config object) |
 | `src/shared/name-matching.js` | Cross-platform fuzzy name matching |
 | `src/shared/xref-candidates.js` | Google Maps cross-reference candidate selection |
-| `src/popup/` | Extension popup |
+| `src/shared/currency.js` | Price normalization across platform currencies |
 | `src/content/` | Content scripts (Google Maps inject) |
 | `tests/` | `node:test` behavioral tests |
 | `dev/` | Local visual review mock (stubbed chrome.* APIs + fixtures) |
