@@ -1,0 +1,40 @@
+# gitleaks configuration for StayProof
+#
+# Run: gitleaks dir . --no-banner -v
+# CI/pre-public gate. Extends the bundled default ruleset and adds a small,
+# explicitly-justified allowlist. The goal is zero findings in shipping code.
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "StayProof allowlist: third-party PUBLIC keys + non-shipped working-dir artifacts"
+
+# --- Allowlisted values (public, non-secret, required for behavior) ---
+regexes = [
+  # Airbnb's PUBLIC client-side API key for /api/v2/autocompletes. This is not a
+  # StayProof secret: Airbnb ships this exact constant in their own public website
+  # JavaScript to every browser, and the scraper must send it to resolve a
+  # destination to an Airbnb place. Used in src/background/service-worker.js
+  # (resolveAirbnbPlace). The milestone is behavior-frozen; this constant already
+  # ships in the published extension.
+  '''d306zoyjsyarp7ifhu67rjxn52tv0t20''',
+]
+
+# --- Allowlisted paths (never part of the repo; gitignored working-dir artifacts) ---
+# These are downloaded third-party web pages used as local scraper test fixtures,
+# build outputs, and local planning docs. They are all gitignored and are NOT in
+# the published tree, but `gitleaks dir .` scans the filesystem, so we exclude them
+# here to keep the scan focused on shipping code. They contain third-party API keys
+# embedded by Booking/Airbnb/Agoda in their own pages — not StayProof secrets.
+paths = [
+  '''_files/''',
+  '''^Agoda ''',
+  '''^Airbnb ''',
+  '''^Booking\.com''',
+  '''^NEWBooking''',
+  '''^Claude''',
+  '''^airbnb-new''',
+  '''^dist/''',
+  '''^\.planning/''',
+]

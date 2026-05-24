@@ -1,0 +1,44 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Planning (proprietary strategy docs)
+.planning/
+.continue-here.md
+
+# Claude Code
+.claude/
+
+# Downloaded web pages (test fixtures)
+*_files/
+Agoda\ *.html
+Airbnb\ *.html
+Booking.com*.html
+NEWBooking*.html
+Claude.html
+airbnb-new.html
+
+# Unrelated project files
+*.jsx
+potato-*
+shadow-run.jsx
+devtools-check.js
+
+# Editor
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Node
+node_modules/
+
+# Publish infrastructure (removed in v13.0 OSS Consolidation)
+.publish/
+dist/
+
+# Visual-review artifacts (Playwright MCP output, ad-hoc screenshots from
+# gsd-ui-review runs). These belong in the conversation, not the repo —
+# baseline screenshots, if we ever add them, live under tests/fixtures/.
+state-*.png
+.playwright-mcp/
